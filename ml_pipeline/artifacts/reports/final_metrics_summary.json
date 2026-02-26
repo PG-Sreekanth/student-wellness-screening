@@ -1,0 +1,15 @@
+{
+  "test_threshold": 0.24,
+  "test_recall": 0.9660377358490566,
+  "test_precision": 0.776018861569552,
+  "test_f1": 0.8606649234217407,
+  "test_f2": 0.9209369254137021,
+  "test_roc_auc": 0.9236991831986513,
+  "test_pr_auc": 0.9388246720705046,
+  "test_brier": 0.1066650527112685,
+  "test_tp": 2304,
+  "test_fp": 665,
+  "test_fn": 81,
+  "test_tn": 1020,
+  "test_flagged_pct": 0.7294840294840295
+}

@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,F1,F2,ROC-AUC,PR-AUC,Threshold
+CatBoost_tuned,0.8167,0.776,0.966,0.8607,0.9209,0.9237,0.9388,0.24

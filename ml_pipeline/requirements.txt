@@ -1,0 +1,12 @@
+# ML Pipeline - Student Depression Screening
+# Requirements
+
+pandas==2.2.3
+numpy==2.1.3
+scikit-learn==1.7.2
+catboost==1.2.8
+optuna>=3.3.0
+shap>=0.42.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+joblib==1.4.2

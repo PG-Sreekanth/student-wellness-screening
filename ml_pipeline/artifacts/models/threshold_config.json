@@ -1,0 +1,12 @@
+{
+  "model_name": "CatBoost_tuned",
+  "feature_set": "A",
+  "threshold": 0.24,
+  "random_state": 42,
+  "cat_indices": [
+    7,
+    8,
+    9,
+    10
+  ]
+}

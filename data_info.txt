@@ -1,0 +1,105 @@
+STUDENT WELLNESS PROJECT - DATA REFERENCE
+
+Project scope
+- Student wellness risk screening and support prioritization (not diagnosis)
+- End-to-end workflow: SQL clean -> EDA -> Power BI -> ML pipeline -> Streamlit app
+
+DATASET VERSIONS
+
+1) Raw dataset
+Path: datasets/raw/Student Depression Dataset.csv
+Rows: 27,870
+Columns: 15
+Description: Original student survey data (one row per student)
+
+2) Cleaned and engineered dataset
+Path: datasets/cleaned/mental_health.csv
+Rows: 27,853
+Columns: 19
+Description: SQL-cleaned dataset used for EDA, Power BI, and ML preparation
+
+3) ML-ready dataset (outliers removed)
+Path: datasets/ml_ready/student_depression_final_age_degree_outliers_removed.csv
+Rows: 27,129
+Description: Dataset used by the ML pipeline after age-degree outlier exclusion
+
+POWER BI KPI NOTE
+- Power BI Page KPI can show 27,197 because the dashboard applies an age-degree outlier filtering layer for stable reporting.
+- This is expected to differ from the cleaned CSV row count (27,853).
+
+RAW COLUMNS (15)
+- id
+- Gender
+- Age
+- City
+- Profession / Degree (project-normalized to degree fields during cleaning)
+- Academic Pressure
+- CGPA
+- Study Satisfaction
+- Sleep Duration
+- Dietary Habits
+- Have you ever had suicidal thoughts ?
+- Work/Study Hours
+- Financial Stress
+- Family History of Mental Illness
+- Depression (target, 0/1)
+
+FINAL CLEANED COLUMNS (19)
+- id
+- gender
+- age
+- city
+- degree
+- degree_category
+- academic_pressure
+- cgpa
+- study_satisfaction
+- sleep_duration
+- dietary_habits
+- suicidal_thoughts
+- work_study_hours
+- financial_stress
+- family_history_mental_illness
+- red_flag
+- wellness
+- support_priority
+- depression
+
+CLEANING SUMMARY
+- Standardized text values (lowercase, trim)
+- Renamed columns to snake_case
+- Cleaned city values (typos, invalid values, unknown mapping)
+- Removed invalid rows in key fields (17 rows total)
+
+ENGINEERED FEATURES
+
+1) degree_category
+- school / ug / pg / phd / others
+
+2) red_flag (0 to 7)
+Count of triggered risk conditions:
+- academic_pressure >= 4
+- financial_stress >= 4
+- work_study_hours >= 10
+- study_satisfaction <= 2
+- sleep_duration = less than 5 hours
+- dietary_habits = unhealthy
+- suicidal_thoughts = yes
+
+3) wellness
+CASE
+  WHEN red_flag <= 2 THEN 'high'
+  WHEN red_flag <= 5 THEN 'moderate'
+  ELSE 'low'
+END
+
+4) support_priority (triage layer)
+- critical
+- high priority
+- moderate priority
+- preventive high risk
+- preventive watchlist
+- stable
+
+KEY REMINDER
+This project is meant for screening and support prioritization. Predictions and dashboard outputs should be reviewed by humans and should not be treated as clinical diagnosis.

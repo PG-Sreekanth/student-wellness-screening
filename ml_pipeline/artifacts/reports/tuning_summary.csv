@@ -1,0 +1,4 @@
+model,best_f2_cv,param_C,param_penalty,param_n_estimators,param_max_depth,param_min_samples_split,param_min_samples_leaf,param_max_features,param_iterations,param_learning_rate,param_depth,param_l2_leaf_reg,param_subsample
+LogisticRegression,0.8974883252340329,0.00010208375357925396,l2,,,,,,,,,,
+RandomForest,0.8953893795681991,,,350.0,6.0,18.0,10.0,sqrt,,,,,
+CatBoost,0.88275088095121,,,,,,,,1000.0,0.015554030016461511,8.0,2.384108858415181,0.9585539460684479
